@@ -1,0 +1,74 @@
+//
+//  PrefixHeader.pch
+//  JKSummary
+//
+//  Created by 三海教育 on 2017/10/20.
+//  Copyright © 2017年 JK. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// General property
+#define kScreenWith [[UIScreen mainScreen] bounds].size.width
+#define kScreenHeight [[UIScreen mainScreen] bounds].size.height
+#define kScreenBounds [[UIScreen mainScreen] bounds]
+#define kBackgroundColor [UIColor colorWithHexString:@"f7f7f7"]
+#define kDeviceVersion [[UIDevice currentDevice] systemVersion]
+#define kTestColor [UIColor redColor]
+#define kNavBackgroundColor [UIColor whiteColor]
+#define kNavTitleColor [UIColor blackColor]
+#define kTabBarTitleNormalColor [UIColor colorWithHexString:@"#A6A6A6"]
+#define kTabBarTitleSelectColor [UIColor colorWithHexString:@"#fcb314"]
+#define kMineCellHeight 60
+#define kLineColor [UIColor colorWithHexString:@"e6e6e6"]
+#define kClearColor [UIColor clearColor]
+
+// Every time you remove an application from a real machine or a simulator, you will regenerate a new one every time
+#define kDeviceInfo NSLog(@"name:%@, model:%@, localizedModel:%@, systemName:%@, systemVersion:%@, identifierForVendor(UUID):%@",[[UIDevice currentDevice] name], [[UIDevice currentDevice] model], [[UIDevice currentDevice] localizedModel], [[UIDevice currentDevice] systemName], [[UIDevice currentDevice] systemVersion], [[[UIDevice currentDevice] identifierForVendor] UUIDString])
+
+// Object info
+#define kLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+#define kObjectInfo NSLog((@"%s [Line %d] -> %@"), __PRETTY_FUNCTION__, __LINE__, [self class]);
+
+// AppDelegate
+#import "AppDelegate.h"
+#import "AppDelegate+AppServices.h"
+#import "BaseViewController.h"
+#import "NetWork.h"
+
+
+// Third Class
+#import <AFNetworking.h>
+#import <MBProgressHUD.h>
+#import <YYCache.h>
+#import <YYKit.h>
+#import <SDWebImage/UIImageView+WebCache.h>
+#import <Masonry.h>
+#import <MJExtension/MJExtension.h>
+#import "SDCycleScrollView.h"
+#import "XHLaunchAd.h"
+
+// Macros
+#import "CommonMacros.h"
+
+// Singleton
+#define SINGLETON_FOR_HEADER(className) \
+\
++ (className *)shared##className;
+
+#define SINGLETON_FOR_CLASS(className) \
+\
++ (className *)shared##className { \
+static className *shared##className = nil; \
+static dispatch_once_t onceToken; \
+dispatch_once(&onceToken, ^{ \
+shared##className = [[self alloc] init]; \
+}); \
+return shared##className; \
+}
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* PrefixHeader_pch */
