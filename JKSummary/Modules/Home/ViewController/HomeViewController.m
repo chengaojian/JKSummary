@@ -40,7 +40,7 @@
     NetWork *netWork = [NetWork shardInstance];
     NSString *url = @"http://www.wuqiongda8888.com/app/list.htm?id=50&page=1&pageSize=10000&videoSize=100000";
     [netWork httpRequestGetWithUrl:url success:^(Response *response) {
-        NSDictionary *responseDict = [NSJSONSerialization JSONObjectWithData:(NSData *)response options:NSJSONReadingMutableLeaves error:nil];
+        NSDictionary *responseDict = [NSJSONSerialization JSONObjectWithData:(id)response options:NSJSONReadingMutableLeaves error:nil];
         NSDictionary *contentDcit = responseDict[@"content"];
         NSArray *categoryVideosArr = contentDcit[@"categoryVideos"];
         NSArray *videosArr = categoryVideosArr[0][@"videos"];
